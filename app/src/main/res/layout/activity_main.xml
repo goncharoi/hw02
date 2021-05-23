@@ -4,15 +4,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_launcher_background"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_margin="7dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:columnCount="3"
+        android:useDefaultMargins="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number">
+
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_1" />
+
+        <Button
+            android:id="@+id/button_2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_2" />
+
+        <Button
+            android:id="@+id/button_3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_3" />
+
+        <Button
+            android:id="@+id/button_4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_4" />
+
+        <Button
+            android:id="@+id/button_5"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_5" />
+
+        <Button
+            android:id="@+id/button_6"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_6" />
+
+        <Button
+            android:id="@+id/button_7"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_7" />
+
+        <Button
+            android:id="@+id/button_8"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_8" />
+
+        <Button
+            android:id="@+id/button_9"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_9" />
+
+        <Button
+            android:id="@+id/button_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill"
+            android:text="@string/_0" />
+
+        <Button
+            android:id="@+id/button_dot"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_dot" />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:useDefaultMargins="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number">
+
+        <Button
+            android:id="@+id/button_clr"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_clr" />
+
+        <Button
+            android:id="@+id/button_del"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_del" />
+
+        <Button
+            android:id="@+id/button_pls"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_pls" />
+
+        <Button
+            android:id="@+id/button_mns"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_mns" />
+
+        <Button
+            android:id="@+id/button_mlt"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_mlt" />
+
+        <Button
+            android:id="@+id/button_div"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="@string/_div" />
+
+        <Button
+            android:id="@+id/button_run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill"
+            android:text="@string/_run" />
+
+    </GridLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
