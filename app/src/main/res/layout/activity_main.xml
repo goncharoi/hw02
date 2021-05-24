@@ -11,8 +11,8 @@
         android:id="@+id/number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_margin="7dp"
+        android:textSize="@dimen/number_text_size"
+        android:layout_margin="@dimen/number_text_margin"
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,55 +26,55 @@
 
         <Button
             android:id="@+id/button_1"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_1" />
 
         <Button
             android:id="@+id/button_2"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_2" />
 
         <Button
             android:id="@+id/button_3"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_3" />
 
         <Button
             android:id="@+id/button_4"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_4" />
 
         <Button
             android:id="@+id/button_5"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_5" />
 
         <Button
             android:id="@+id/button_6"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_6" />
 
         <Button
             android:id="@+id/button_7"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_7" />
 
         <Button
             android:id="@+id/button_8"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_8" />
 
         <Button
             android:id="@+id/button_9"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_9" />
 
@@ -90,7 +90,7 @@
 
         <Button
             android:id="@+id/button_dot"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_dot" />
     </GridLayout>
@@ -105,37 +105,37 @@
 
         <Button
             android:id="@+id/button_clr"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_clr" />
 
         <Button
             android:id="@+id/button_del"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_del" />
 
         <Button
             android:id="@+id/button_pls"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_pls" />
 
         <Button
             android:id="@+id/button_mns"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_mns" />
 
         <Button
             android:id="@+id/button_mlt"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_mlt" />
 
         <Button
             android:id="@+id/button_div"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/_div" />
 
