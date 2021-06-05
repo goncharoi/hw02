@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="button_main">
+        <item name="android:layout_height">@dimen/button_num_height</item>
+        <item name="backgroundTint">@color/button_main_color</item>
+        <item name="android:textSize">@dimen/number_text_size</item>
+        <item name="cornerRadius">@dimen/button_main_radius</item>
+    </style>
+    <style name="button_num" parent="button_main">
+        <item name="android:layout_width">@dimen/button_num_width</item>
+    </style>
+    <style name="button_wide" parent="button_main">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_columnSpan">2</item>
+        <item name="android:layout_gravity">fill</item>
+    </style>
+    <style name="button_long" parent="button_main">
+        <item name="android:layout_width">@dimen/button_num_width</item>
+        <item name="android:layout_rowSpan">2</item>
+        <item name="android:layout_gravity">fill</item>
+    </style>
+</resources>
