@@ -3,13 +3,20 @@ package com.example.hw02;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
+
+import static com.example.hw02.Calculator.ERROR;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static class Key {
+        public static final String CALCULATOR = "Calculator";
+        public static final String NUMBER = "Number";
+    }
+
     private TextView moNumber;
     private Calculator moCalc;
+    private boolean mvNoInput = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +26,34 @@ public class MainActivity extends AppCompatActivity {
         moNumber = findViewById(R.id.number);
         moCalc = new Calculator();
 
-        findViewById(R.id.button_clr).setOnClickListener(v -> {
+        findViewById(R.id.button_clear).setOnClickListener(v -> {
             moCalc = new Calculator();
             moNumber.setText("");
         });
 
-        findViewById(R.id.button_del).setOnClickListener(v -> moNumber.setText(""));
+        findViewById(R.id.button_delete).setOnClickListener(v -> moNumber.setText(""));
 
         //Вычисления
-        findViewById(R.id.button_pls).setOnClickListener(v -> moNumber.setText(moCalc.onActionBtn(Action.PLS,getFloatFromScr())));
-        findViewById(R.id.button_mns).setOnClickListener(v -> moNumber.setText(moCalc.onActionBtn(Action.MNS,getFloatFromScr())));
-        findViewById(R.id.button_mlt).setOnClickListener(v -> moNumber.setText(moCalc.onActionBtn(Action.MLT,getFloatFromScr())));
-        findViewById(R.id.button_div).setOnClickListener(v -> moNumber.setText(moCalc.onActionBtn(Action.DIV,getFloatFromScr())));
-        findViewById(R.id.button_run).setOnClickListener(v -> moNumber.setText(moCalc.onActionBtn(null,getFloatFromScr())));
+        findViewById(R.id.button_plus).setOnClickListener(v -> {
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.PLUS,getFloatFromScr()));
+            mvNoInput = true;
+        });
+        findViewById(R.id.button_minus).setOnClickListener(v -> {
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.MINUS,getFloatFromScr()));
+            mvNoInput = true;
+        });
+        findViewById(R.id.button_multiply).setOnClickListener(v -> {
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.MULTIPLY,getFloatFromScr()));
+            mvNoInput = true;
+        });
+        findViewById(R.id.button_divide).setOnClickListener(v -> {
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.DIVIDE,getFloatFromScr()));
+            mvNoInput = true;
+        });
+        findViewById(R.id.button_equals).setOnClickListener(v -> {
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.EQUALS,getFloatFromScr()));
+            mvNoInput = true;
+        });
 
         //Набор
         findViewById(R.id.button_0).setOnClickListener(v -> addCharToNumber(getString(R.string._0)));
@@ -49,7 +71,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addCharToNumber(String ivStr){
+        if (moNumber.getText().toString().equals(ERROR) || mvNoInput) {
+            moNumber.setText("");
+        }
+        if (ivStr.equals(getString(R.string._dot)) && moNumber.getText().toString().contains(getString(R.string._dot))){
+            return;
+        }
         moNumber.setText(moNumber.getText().toString() + ivStr);
+        mvNoInput = false;
     }
 
     private Float getFloatFromScr(){
@@ -64,16 +93,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle instanceState) {
         super.onSaveInstanceState(instanceState);
-        instanceState.putSerializable(Key.CALC.toString(), moCalc);
-        instanceState.putString(Key.NUMB.toString(), moNumber.getText().toString());
+        instanceState.putSerializable(Key.CALCULATOR, moCalc);
+        instanceState.putString(Key.NUMBER, moNumber.getText().toString());
     }
 
     //Восстановление данных
     @Override
     protected void onRestoreInstanceState(Bundle instanceState) {
         super.onRestoreInstanceState(instanceState);
-        moCalc = (Calculator) instanceState.getSerializable(Key.CALC.toString());
-        moNumber.setText(instanceState.getString(Key.NUMB.toString()));
+        moCalc = (Calculator) instanceState.getSerializable(Key.CALCULATOR);
+        moNumber.setText(instanceState.getString(Key.NUMBER));
     }
 
 }
