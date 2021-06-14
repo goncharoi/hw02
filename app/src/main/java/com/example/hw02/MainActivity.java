@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         public static final String NUMBER = "Number";
     }
 
-    private  static class  ThemeKey {
+    private static class ThemeKey {
         private static final int APP_THEME = 0;
         private static final int APP_THEME_GREEN = 1;
     }
@@ -41,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setTheme(getAppTheme(R.style.AppTheme));
         setContentView(R.layout.activity_main);
 
-        moSwitch = (SwitchMaterial)findViewById(R.id.theme_switch);
-        moSwitch.setChecked(moSharedPref.getBoolean(THEME_SWITCH_CHECKED,false));
+        moSwitch = (SwitchMaterial) findViewById(R.id.theme_switch);
+        moSwitch.setChecked(moSharedPref.getBoolean(THEME_SWITCH_CHECKED, false));
 
         moNumber = findViewById(R.id.number);
         moCalc = new Calculator();
@@ -56,23 +57,23 @@ public class MainActivity extends AppCompatActivity {
 
         //Вычисления
         findViewById(R.id.button_plus).setOnClickListener(v -> {
-            moNumber.setText(moCalc.onActionBtn(Calculator.Action.PLUS,getFloatFromScr()));
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.PLUS, getFloatFromScr()));
             mvNoInput = true;
         });
         findViewById(R.id.button_minus).setOnClickListener(v -> {
-            moNumber.setText(moCalc.onActionBtn(Calculator.Action.MINUS,getFloatFromScr()));
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.MINUS, getFloatFromScr()));
             mvNoInput = true;
         });
         findViewById(R.id.button_multiply).setOnClickListener(v -> {
-            moNumber.setText(moCalc.onActionBtn(Calculator.Action.MULTIPLY,getFloatFromScr()));
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.MULTIPLY, getFloatFromScr()));
             mvNoInput = true;
         });
         findViewById(R.id.button_divide).setOnClickListener(v -> {
-            moNumber.setText(moCalc.onActionBtn(Calculator.Action.DIVIDE,getFloatFromScr()));
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.DIVIDE, getFloatFromScr()));
             mvNoInput = true;
         });
         findViewById(R.id.button_equals).setOnClickListener(v -> {
-            moNumber.setText(moCalc.onActionBtn(Calculator.Action.EQUALS,getFloatFromScr()));
+            moNumber.setText(moCalc.onActionBtn(Calculator.Action.EQUALS, getFloatFromScr()));
             mvNoInput = true;
         });
 
@@ -90,38 +91,33 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_dot).setOnClickListener(v -> addCharToNumber(getString(R.string._dot)));
 
         //Переключение темы
-        findViewById(R.id.theme_switch).setOnClickListener(v ->  {
-                // сохраним настройки
-                if (moSwitch.isChecked()){
-                    setAppTheme(ThemeKey.APP_THEME_GREEN);
-                } else {
-                    setAppTheme(ThemeKey.APP_THEME);
-                }
-                SharedPreferences.Editor editor = moSharedPref.edit();
-                editor.putBoolean(THEME_SWITCH_CHECKED,moSwitch.isChecked());
-                editor.apply();
-
-                // пересоздадим активити, чтобы тема применилась
-                recreate();
+        moSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            // сохраним настройки
+            setAppTheme(isChecked ? ThemeKey.APP_THEME_GREEN : ThemeKey.APP_THEME);
+            SharedPreferences.Editor editor = moSharedPref.edit();
+            editor.putBoolean(THEME_SWITCH_CHECKED, moSwitch.isChecked());
+            editor.apply();
+            // пересоздадим активити, чтобы тема применилась
+            recreate();
         });
     }
 
-    private void addCharToNumber(String ivStr){
+    private void addCharToNumber(String ivStr) {
         if (moNumber.getText().toString().equals(ERROR) || mvNoInput) {
             moNumber.setText("");
         }
-        if (ivStr.equals(getString(R.string._dot)) && moNumber.getText().toString().contains(getString(R.string._dot))){
+        if (ivStr.equals(getString(R.string._dot)) && moNumber.getText().toString().contains(getString(R.string._dot))) {
             return;
         }
         moNumber.setText(moNumber.getText().toString() + ivStr);
         mvNoInput = false;
     }
 
-    private Float getFloatFromScr(){
+    private Float getFloatFromScr() {
         try {
-            return  Float.valueOf(moNumber.getText().toString());
+            return Float.valueOf(moNumber.getText().toString());
         } catch (NumberFormatException loEx) {
-            return  null;
+            return null;
         }
     }
 
@@ -146,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Чтение настроек, параметр «тема»
-    private int getCodeStyle(int ivCodeStyle){
+    private int getCodeStyle(int ivCodeStyle) {
         return moSharedPref.getInt(APP_THEME, ivCodeStyle);
     }
 
@@ -157,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    private int codeStyleToStyleId(int ivCodeStyle){
-        switch(ivCodeStyle){
+    private int codeStyleToStyleId(int ivCodeStyle) {
+        switch (ivCodeStyle) {
             case ThemeKey.APP_THEME_GREEN:
                 return R.style.AppThemeGreen;
             default:
