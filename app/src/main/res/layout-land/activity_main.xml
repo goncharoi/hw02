@@ -10,9 +10,9 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/background"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/lid_image168821" />
+        app:srcCompat="@drawable/lid_image168821"
+        android:contentDescription="@string/background" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/theme_switch"
@@ -31,13 +31,12 @@
         android:layout_margin="@dimen/number_text_margin"
         android:background="@color/white"
         android:textSize="@dimen/number_text_size"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theme_switch" />
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
+        android:columnCount="4"
         android:useDefaultMargins="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number">
@@ -60,6 +59,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_4"
             style="@style/button_num"
+            android:layout_row="1"
+            android:layout_column="0"
             android:text="@string/_4" />
 
         <com.google.android.material.button.MaterialButton
@@ -75,6 +76,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_7"
             style="@style/button_num"
+            android:layout_row="2"
+            android:layout_column="0"
             android:text="@string/_7" />
 
         <com.google.android.material.button.MaterialButton
@@ -89,9 +92,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_0"
-            style="@style/button_wide"
-            android:layout_row="3"
-            android:layout_column="0"
+            style="@style/button_long"
+            android:layout_row="0"
+            android:layout_column="3"
             android:text="@string/_0" />
 
         <com.google.android.material.button.MaterialButton
@@ -103,7 +106,7 @@
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="2"
+        android:columnCount="4"
         android:useDefaultMargins="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number">
@@ -114,11 +117,6 @@
             android:text="@string/_clr" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_delete"
-            style="@style/button_num"
-            android:text="@string/_del" />
-
-        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_plus"
             style="@style/button_num"
             android:text="@string/_pls" />
@@ -127,6 +125,13 @@
             android:id="@+id/button_minus"
             style="@style/button_num"
             android:text="@string/_mns" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_delete"
+            style="@style/button_num"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:text="@string/_del" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_multiply"
@@ -140,10 +145,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_equals"
-            style="@style/button_wide"
-            android:layout_column="0"
+            style="@style/button_long"
+            android:layout_row="0"
+            android:layout_column="3"
             android:text="@string/_run" />
 
     </GridLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
