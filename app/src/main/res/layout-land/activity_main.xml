@@ -14,6 +14,16 @@
         app:srcCompat="@drawable/lid_image168821"
         android:contentDescription="@string/background" />
 
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/theme_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/number_text_margin"
+        android:text="@string/theme_switch"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/number"
         android:layout_width="match_parent"
@@ -21,7 +31,7 @@
         android:layout_margin="@dimen/number_text_margin"
         android:background="@color/white"
         android:textSize="@dimen/number_text_size"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/theme_switch" />
 
     <GridLayout
         android:layout_width="wrap_content"
